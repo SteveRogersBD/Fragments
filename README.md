@@ -5,6 +5,7 @@
 <H1> send information in between fragments </H1>
 
 ```
+//in the source activity or fragment
 Bundle bundle = new Bundle();
 bundle.putString("key", "value");
 
@@ -14,4 +15,12 @@ fragment.setArguments(bundle);
 getSupportFragmentManager().beginTransaction()
         .replace(R.id.fragment_container, fragment)
         .commit();
+```
+```
+// in the target fragment
+Bundle args = getArguments();
+if (args != null) {
+    String value = args.getString("key");
+    // Use the received value
+}
 ```
